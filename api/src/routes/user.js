@@ -1,9 +1,10 @@
 import express from 'express';
-import { getUserProfile } from '../controllers/user.js';
+import {getUserProfile, updateUserProfile} from '../controllers/user.js';
 
 const router = express.Router();
 
 router.get('/profile', getUserProfile);
+router.post('/profile/update', updateUserProfile);
 
 
 

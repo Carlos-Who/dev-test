@@ -1,9 +1,13 @@
+import './styles.css'
 
 document.getElementById('login-form').addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+    const errorMessage = document.getElementById('login-error');
+
+    errorMessage.classList.add('hidden')
 
     try {
         const res = await fetch('/auth/login', {
@@ -12,15 +16,19 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
             body: JSON.stringify({ email, password })
         });
 
+        const data = await res.json();
+        console.log('Login response:', data);
+
         if (!res.ok) {
-            const data = await res.json();
-            return alert(data.message || 'Login failed');
+            errorMessage.classList.remove('hidden');
+            return;
         }
 
-        const redirectUrl = res.url;
-        window.location.href = redirectUrl;
+        localStorage.setItem('userId', data._id);
+        window.location.href = './pages/user/user-profile.html';
     } catch (err) {
         console.error('Login error:', err);
-        alert('Something went wrong');
+        errorMessage.textContent = 'Something went wrong. Please try again.';
+        errorMessage.classList.remove('hidden');
     }
-});
+})

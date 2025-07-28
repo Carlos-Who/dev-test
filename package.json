@@ -21,9 +21,11 @@
   },
   "homepage": "https://github.com/tehnorm/dev-test#readme",
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.11",
     "express": "^5.1.0",
     "lowdb": "^7.0.1",
-    "morgan": "^1.10.1"
+    "morgan": "^1.10.1",
+    "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
     "nodemon": "^3.1.10",
