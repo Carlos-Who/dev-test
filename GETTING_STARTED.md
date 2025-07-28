@@ -1,7 +1,7 @@
 
 # SMART Pump
 
-A brief description of what this project does and who it's for
+
 
 
 ## How to run the project
